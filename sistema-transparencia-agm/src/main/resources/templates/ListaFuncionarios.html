@@ -22,14 +22,9 @@
 		<br>
 		<label>Salário:</label>
 		<select id="salariopesquisa" name="salariopesquisa" form="pesquisa">
-			<option value="0">Qualquer</option>
-			<option value="1">Acima de R$1.000,00</option>
-			<option value="2">Acima de R$2.000,00</option>
-			<option value="3">Acima de R$3.000,00</option>
-			<option value="4">Acima de R$4.000,00</option>
-			<option value="5">Acima de R$5.000,00</option>
-			<option value="6">Acima de R$10.000,00</option>
-			<option value="7">Acima de R$15.000,00</option>
+			<option th:each="opcaoValor : ${T(br.gov.sp.fatec.transparencia.controller.enums.SalarioPesquisa).values()}"
+        		th:value="${opcaoValor.valor}" 
+        		th:text="${opcaoValor.descricao}"></option>
 		</select> 
 		<input type="submit" value="Buscar"></input>
 	</form>

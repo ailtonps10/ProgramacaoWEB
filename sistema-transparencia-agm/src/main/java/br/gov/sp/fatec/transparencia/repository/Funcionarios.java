@@ -14,15 +14,17 @@ import br.gov.sp.fatec.transparencia.model.Funcionario;
 @Transactional
 public interface Funcionarios extends JpaRepository<Funcionario, Long> {
 	
-	@Query("select f from Funcionario f where f.fnc_nome like ?1 and f.fnc_cargo like ?2")
-	List<Funcionario> findFuncionarioByNome(String nome, String cargo);
+	@Query("select f from Funcionario f where f.fnc_salario >= ?1 and f.fnc_nome like ?2 and f.fnc_cargo like ?3")
+	List<Funcionario> findFuncionarioByNome(Double salario, String nome, String cargo);
 	
-	@Query("select f from Funcionario f where f.fnc_nome like ?1")
-	List<Funcionario> findFuncionarioByNome(String nome);
+	@Query("select f from Funcionario f where f.fnc_salario >= ?1 and f.fnc_nome like ?2")
+	List<Funcionario> findFuncionarioByNome(Double salario, String nome);
 	
-	@Query("select f from Funcionario f where f.fnc_cargo like ?1")
-	List<Funcionario> findFuncionarioByCargo(String cargo);
+	@Query("select f from Funcionario f where f.fnc_salario >= ?1 and f.fnc_cargo like ?2")
+	List<Funcionario> findFuncionarioByCargo(Double salario, String cargo);
 	
 	@Query("select f from Funcionario f where f.fnc_salario >= ?1")
-	List<Funcionario> findFuncionarioBySalario(Integer salario);
+	List<Funcionario> findFuncionarioBySalario(Double salario);
+	
+	//List<Funcionario> findByFnc_salarioGreaterThanOrEqual(Double salario);
 }

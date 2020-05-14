@@ -28,30 +28,34 @@ public class FuncionariosController {
 	}
 	
 	@PostMapping("**/pesquisarfuncionario")
-	public ModelAndView listaFuncionariosComFiltro(@RequestParam("nomepesquisa") String nomepesquisa, @RequestParam("cargopesquisa") String cargopesquisa, @RequestParam("salariopesquisa") String salariopesquisa) {
+	public ModelAndView listaFuncionariosComFiltro(@RequestParam("nomepesquisa") String nomePesquisa, @RequestParam("cargopesquisa") String cargoPesquisa, @RequestParam("salariopesquisa") String salarioPesquisa) {
 		ModelAndView modelAndView = new ModelAndView("ListaFuncionarios");
-		
 		HashMap<String, String> parametrosPesquisa = new HashMap<String, String>();
-			
-		if (!nomepesquisa.trim().isEmpty() && nomepesquisa != null) {
-			nomepesquisa = "%" + nomepesquisa.toUpperCase() + "%";
-			parametrosPesquisa.put("nome", nomepesquisa);
+		Double salarioPesquisaDouble;
+		
+		if (!nomePesquisa.trim().isEmpty() && nomePesquisa != null) {
+			nomePesquisa = "%" + nomePesquisa.toUpperCase() + "%";
+			parametrosPesquisa.put("nome", nomePesquisa);
 		}
-		if (!cargopesquisa.trim().isEmpty() && cargopesquisa != null) {
-			cargopesquisa = "%" + cargopesquisa.toUpperCase() + "%";
-			parametrosPesquisa.put("cargo", cargopesquisa);
+		if (!cargoPesquisa.trim().isEmpty() && cargoPesquisa != null) {
+			cargoPesquisa = "%" + cargoPesquisa.toUpperCase() + "%";
+			parametrosPesquisa.put("cargo", cargoPesquisa);
 		}
-		System.out.println(parametrosPesquisa.get("cargo"));
+		
+		salarioPesquisaDouble = Double.parseDouble(salarioPesquisa);
 		
 		if (parametrosPesquisa.containsKey("nome") && parametrosPesquisa.containsKey("cargo")) {
-			modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByNome(parametrosPesquisa.get("nome"), parametrosPesquisa.get("cargo")));
+			modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByNome(salarioPesquisaDouble, parametrosPesquisa.get("nome"), parametrosPesquisa.get("cargo")));
 		}
 		else {
 			if (parametrosPesquisa.containsKey("nome")) {
-				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByNome(parametrosPesquisa.get("nome")));
+				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByNome(salarioPesquisaDouble, parametrosPesquisa.get("nome")));
+			}
+			else if (parametrosPesquisa.containsKey("cargo")){
+				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByCargo(salarioPesquisaDouble, parametrosPesquisa.get("cargo")));
 			}
 			else {
-				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByCargo(parametrosPesquisa.get("cargo")));
+				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioBySalario(salarioPesquisaDouble));
 			}
 		}
 		return modelAndView;
