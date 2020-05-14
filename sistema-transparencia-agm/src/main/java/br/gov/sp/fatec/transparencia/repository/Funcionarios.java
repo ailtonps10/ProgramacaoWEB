@@ -22,4 +22,7 @@ public interface Funcionarios extends JpaRepository<Funcionario, Long> {
 	
 	@Query("select f from Funcionario f where f.fnc_cargo like ?1")
 	List<Funcionario> findFuncionarioByCargo(String cargo);
+	
+	@Query("select f from Funcionario f where f.fnc_salario >= ?1")
+	List<Funcionario> findFuncionarioBySalario(Integer salario);
 }
