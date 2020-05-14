@@ -15,5 +15,11 @@ import br.gov.sp.fatec.transparencia.model.Funcionario;
 public interface Funcionarios extends JpaRepository<Funcionario, Long> {
 	
 	@Query("select f from Funcionario f where f.fnc_nome like ?1 and f.fnc_cargo like ?2")
-	List<Funcionario> findFuncionarioByName(String nome, String cargo);
+	List<Funcionario> findFuncionarioByNome(String nome, String cargo);
+	
+	@Query("select f from Funcionario f where f.fnc_nome like ?1")
+	List<Funcionario> findFuncionarioByNome(String nome);
+	
+	@Query("select f from Funcionario f where f.fnc_cargo like ?1")
+	List<Funcionario> findFuncionarioByCargo(String cargo);
 }
