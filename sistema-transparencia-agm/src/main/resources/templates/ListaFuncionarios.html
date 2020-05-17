@@ -37,17 +37,24 @@
 				<thead>
 					Sistema de transparência Mogi das Cruzes
 					<tr>
+						<th>Selecionar</th>
 						<th>Nome</th>
 						<th>Cargo</th>
 						<th>Salário</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr th:each="funcionario : ${funcionarios}">
-						<td th:text="${funcionario.fnc_nome}"></td>
-						<td th:text="${funcionario.fnc_cargo}"></td>
-						<td th:text="${funcionario.fnc_salario}"></td>
-					</tr>
+					<form action="selecionarfuncionario" method="post">
+						<tr th:each="funcionario : ${funcionarios}">
+							<td>
+							<input type="checkbox" 
+							th:value="${funcionario.fnc_id}">
+  							</td>
+							<td th:text="${funcionario.fnc_nome}"></td>
+							<td th:text="${funcionario.fnc_cargo}"></td>
+							<td th:text="${funcionario.fnc_salario}"></td>
+						</tr>
+					</form>
 				</tbody>
 			</table>
 		</div>

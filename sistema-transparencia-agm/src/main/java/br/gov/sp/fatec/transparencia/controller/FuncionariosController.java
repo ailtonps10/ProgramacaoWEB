@@ -15,6 +15,12 @@ public class FuncionariosController {
 	
 	@Autowired
 	private Funcionarios funcionarios;
+	
+	@GetMapping("/transparenciaMogi")
+	public ModelAndView telaPrincipal() {
+		ModelAndView modelAndView = new ModelAndView("TransparenciaMogi");
+		return modelAndView;
+	}
 
 	@GetMapping("/funcionarios")
 	public ModelAndView listaFuncionarios() {
@@ -55,6 +61,19 @@ public class FuncionariosController {
 				modelAndView.addObject("funcionarios", funcionarios.findFuncionarioBySalario(salarioPesquisaDouble));
 			}
 		}
+		return modelAndView;
+	}
+	
+	
+	@PostMapping("**/salarioprefeito")
+	public ModelAndView listarSalarioPrefeito(){
+		ModelAndView modelAndView = new ModelAndView("ListaFuncionarios");
+		Double salario = 0d;
+		String cargo = "%PREFEI%";
+		
+		
+		modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByCargo(salario, cargo));
+		
 		return modelAndView;
 	}
 }

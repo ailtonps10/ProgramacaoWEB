@@ -22,10 +22,10 @@ public class Funcionario implements Serializable {
 	private String fnc_cargo;
 	private Double fnc_salario;
 	
-	public Long getId() {
+	public Long getFnc_id() {
 		return fnc_id;
 	}
-	public void setId(Long id) {
+	public void setFnc_id(Long id) {
 		this.fnc_id = id;
 	}
 	public String getFnc_nome() {
