@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Lista de Funcionarios</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<label>Transparencia Mogi - Consulta de salários dos servidores públicos</label>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de funcionarios</h1>
+		</div>
+		<div class="camara">
+		<form id="menuprincipal" action="camara" method="post">
+			<label>Câmara:</label>
+			<br>
+			<input type=image src="images/camera.png" width="150" height="150">
+		</form>
+		</div>
+		<div class="prefeitura">
+		<form id="menuprincipal" action="prefeitura" method="post">
+			<label>Prefeitura:</label>
+			<br>
+			<input type=image src="images/prefeitura.png" width="150" height="150">
+		</form>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
