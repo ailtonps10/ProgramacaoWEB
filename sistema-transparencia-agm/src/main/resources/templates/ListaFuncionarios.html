@@ -44,7 +44,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					<form action="selecionarfuncionario" method="post">
+					<form action="compararfuncionario" method="post"
+					th:object="${comparar}">
 						<tr th:each="funcionario : ${funcionarios}">
 							<td>
 							<input type="checkbox" 
@@ -54,6 +55,7 @@
 							<td th:text="${funcionario.fnc_cargo}"></td>
 							<td th:text="${funcionario.fnc_salario}"></td>
 						</tr>
+						<input type="submit" value="selecionar">
 					</form>
 				</tbody>
 			</table>

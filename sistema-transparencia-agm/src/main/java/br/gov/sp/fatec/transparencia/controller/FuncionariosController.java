@@ -76,4 +76,9 @@ public class FuncionariosController {
 		
 		return modelAndView;
 	}
+	
+	//@PostMapping("**/compararfuncionario")
+	//public ModelAndView compararFuncionario(@RequestParam ) {
+		
+	//}
 }

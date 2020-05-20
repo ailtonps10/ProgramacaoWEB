@@ -21,7 +21,7 @@ public class Funcionario implements Serializable {
 	private String fnc_nome;
 	private String fnc_cargo;
 	private Double fnc_salario;
-	
+		
 	public Long getFnc_id() {
 		return fnc_id;
 	}
