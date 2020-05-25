@@ -2,6 +2,7 @@ package br.gov.sp.fatec.transparencia.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,6 +22,9 @@ public class Funcionario implements Serializable {
 	private String fnc_nome;
 	private String fnc_cargo;
 	private Double fnc_salario;
+	
+	@Column(name="fnc_referencia")
+	private String referencia;
 		
 	public Long getFnc_id() {
 		return fnc_id;
