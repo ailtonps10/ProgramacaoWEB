@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Comparar Funcionarios</title>
+<link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"
+	rel="stylesheet" />
+<link th:href="@{/webjars/bootstrap/css/bootstrap-theme.min.css}"
+	rel="stylesheet" />
+</head>
+<body>
+	<br>
+	<label>Transparencia Mogi - Comparação de funcionários</label>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Funcionários</h1>
+		</div>
+		<div class="panel-body">
+			<table class="table">
+				<thead>
+					Sistema de transparência Mogi das Cruzes
+					<tr>
+						<th>Selecionar</th>
+						<th>Nome</th>
+						<th>Cargo</th>
+						<th>Salário</th>
+						<th>Gráficos</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="funcionario : ${funcionarios}">
+						<td><input type="checkbox" th:value="${funcionario.fnc_id}">
+						</td>
+						<td th:text="${funcionario.fnc_nome}"></td>
+						<td th:text="${funcionario.fnc_cargo}"></td>
+						<td th:text="${funcionario.fnc_salario}"></td>
+						<td>Graficos aqui</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+	<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+</html>
