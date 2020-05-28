@@ -77,6 +77,18 @@ public class FuncionariosController {
 		return modelAndView;
 	}
 	
+	@GetMapping("**/salarioprefeito")
+	public ModelAndView listarSalarioPrefeitoGet(){
+		ModelAndView modelAndView = new ModelAndView("ListaFuncionarios");
+		Double salario = 0d;
+		String cargo = "%PREFEI%";
+		
+		
+		modelAndView.addObject("funcionarios", funcionarios.findFuncionarioByCargo(salario, cargo));
+		
+		return modelAndView;
+	}
+	
 	//@PostMapping("**/compararfuncionario")
 	//public ModelAndView compararFuncionario(@RequestParam ) {
 		

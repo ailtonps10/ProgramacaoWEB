@@ -22,5 +22,5 @@ public interface Projetos extends JpaRepository<Projeto, Long> {
 
 	public List<Projeto> findByAssuntoContaining(String assunto);
 
-	public List<Projeto> findByLeiContaing(String lei);
+	//public List<Projeto> findByLeiContaing(String lei);
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller;
 import br.gov.sp.fatec.transparencia.repository.Projetos;
 
 @Controller
-public class ProjetoController {
+public class ProjetosController {
 
 	@Autowired
 	private Projetos projetos;
